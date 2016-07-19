@@ -38,6 +38,7 @@ def get_numpy_data(data_sframe, features, output):
 
 """
 np.dot() also works when dealing with a matrix and a vector.
+(dimension should be matched)
 Recall that the predictions from all the observations
 is just the RIGHT (as in weights on the right) dot product
 between the features matrix and the weights vector.
@@ -76,7 +77,7 @@ between the values of feature_i and the current errors.
 def feature_derivative(errors, feature):
     # Assume that errors and feature are both numpy arrays of the same length (number of data points)
     # compute twice the dot product of these vectors as 'derivative' and return the value
-    derivative=2*np.dot(errors.T, feature)
+    derivative=2*np.dot(errors, feature)
     return(derivative)
 
 """ Gradient descent
