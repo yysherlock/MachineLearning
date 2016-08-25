@@ -21,13 +21,13 @@ class Point(object):
 def kmeans(centers, points):
     new_centers = [Point(0.0,0.0) for i in range(len(centers))]
 
-    # step 1, assign 
+    # Classify step
     for point in points:
         cluster = np.argmin([point.dist(c) for c in centers])
-        #print(point.x1,point.x2,cluster)
         if point.cluster != cluster:
             point.change += 1
             point.assign(cluster)
+        # Recenter step
         new_centers[cluster].x1 += point.x1
         new_centers[cluster].x2 += point.x2
         new_centers[cluster].points += 1
